@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gestione Ristorante</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="tavoli">
+    <div id="menuHeaderTavoli" class="col-12">
+        <table id="tableHeaderTavoli">
+            <tr>
+                <td>Gestione Ordini</td>
+            </tr>
+        </table>
+    </div>
+    <div id="bodyContentTavoli" class="col-12">
+        <div id="divtavoli" class="container-prodotti" >
+            <h2>Tavoli</h2>
+            <table class="table" id="tabletavoli">
+                <!-- contenuto autogenerato da script -->
+            </table>
+        </div>
+        <div id="divasporto" class="container-prodotti" >
+            <h2>Asporto</h2>
+            <table class="table" id="tableasporto">
+                <!-- contenuto autogenerato da script -->
+            </table>
+        </div>
+    </div>
+
+    <div id="menuFooterTavoli" class="col-12">
+        <table style="height: 100%; width: 100%; text-align: center;">
+            <tr>
+                <td>Swipe down to come back</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="menuHeader" class="col-12">
+    <table id="tableHeader">
+        <tr>
+            <td onclick="changeCategory('antipasti', this);" class="table-header-active">
+                <i class="material-icons">local_dining</i>
+            </td>
+            <td onclick="changeCategory('primiPiatti', this);">
+                <i class="material-icons">looks_one local_dining</i>
+            </td>
+            <td onclick="changeCategory('secondiPiatti', this);">
+                <i class="material-icons">looks_two local_dining</i>
+            </td>
+            <td onclick="changeCategory('bibite', this);">
+                <i class="material-icons">local_bar</i>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="bodyContent" class="col-12">
+
+</div>
+
+<div id="menuFooter" class="col-12">
+    <table id="tableInfoCarrello">
+    </table>
+</div>
+
+<div id="cassa" >
+    <div id="menuHeaderCassa">
+        <table style="height: 100%; width: 100%;">
+            <tr>
+                <td>Men&ugrave; cassa</td>
+            </tr>
+        </table>
+    </div>
+    <div id="bodyContentCassa">
+        <table class="table" style="margin-top: 5vh; width: 100%; text-align: center;" >
+            <tr>
+                <td onclick="openDrawer();">Apri cassetto</td>
+            </tr>
+            <tr>
+                <td>Chiusura fiscale</td>
+            </tr>
+        </table>
+
+    </div>
+    <div id="menuFooterCassa">
+
+    </div>
+</div>
+
+<!-- Modal per le note dei prodotti -->
+<div class="modal fade" id="modalNoteProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalNoteProductTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea class="form-control" id="valueNoteProduct" rows="3"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button id="btnSaveNote" type="button" class="btn btn-primary" onclick="saveNoteProduct();" nomeProdotto="">Salva</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://hammerjs.github.io/dist/hammer.js"></script>
+<script src="script/script.js"></script>
+</body>
+</html>

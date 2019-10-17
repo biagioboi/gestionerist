@@ -1,0 +1,97 @@
+#menuHeader {
+    height: 10vh;
+    background-color: #e6b38c;
+    padding: 0;
+}
+#menuFooter {
+    height: 10vh;
+    background-color: #e6b38c;
+    padding: 0;
+}
+#bodyContent {
+    height: 80vh;
+    overflow-x: hidden;
+}
+
+#cassa {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left:0;
+    top:0;
+    display: none;
+}
+#menuHeaderCassa{
+    height: 10%;
+    background-color: #e6b38c;
+    padding: 0;
+    text-align: center;
+}
+#menuFooterCassa {
+    height: 10%;
+    background-color: #e6b38c;
+    padding: 0;
+}
+#bodyContentCassa {
+    height: 80%;
+    overflow-x: hidden;
+}
+#tableHeaderCassa {
+    width: 100%;
+    height: 100%;
+}
+#tableHeaderCassa td{
+    width: 100%;
+    text-align: center;
+}
+#tavoli {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left:0;
+    top:0;
+    display: none;
+}
+#menuHeaderTavoli{
+    height: 10%;
+    background-color: #e6b38c;
+    padding: 0;
+    text-align: center;
+}
+#menuFooterTavoli {
+    height: 10%;
+    background-color: #e6b38c;
+    padding: 0;
+}
+#bodyContentTavoli {
+    height: 80%;
+    overflow-x: hidden;
+}
+#tableHeaderTavoli {
+    width: 100%;
+    height: 100%;
+}
+#tableHeaderTavoli td{
+    width: 100%;
+    text-align: center;
+}
+#tableHeader {
+    width: 100%;
+    height: 100%;
+}
+#tableHeader td{
+    width: 25%;
+    text-align: center;
+}
+.table-header-active {
+    background-color: #ad886c;
+    transition: background-color 0.5s;
+}
+.container-prodotti {
+    margin-top: 2vh;
+}
+#tableInfoCarrello {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MULTIDRIVERSERVER>
+  <ECRMODEL value="PRINTF" />
+  <PROTOCOL value="S" />
+  <FREQUENCE value="2" />
+  <CONNTYPE value="LAN" />
+  <BAUDRATE value="9600" />
+  <COMPORT value="COM1" />
+  <ETHIP value="192.168.1.10" />
+  <ETHPORT value="23" />
+  <LANGUAGE value="ITA" />
+  <DIRECTORYINPUT value="D:\xampp\htdocs\Ristorante Europa\controller\cassa\TOSEND" />
+  <DIRECTORYOUTPUT value="D:\xampp\htdocs\Ristorante Europa\controller\cassa\UNSENT" />
+  <LOG value="S" />
+  <RETRYNR value="3" />
+</MULTIDRIVERSERVER>
