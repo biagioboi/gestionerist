@@ -11,7 +11,9 @@ $(document).ready(function() {
         var gestureHandler = new Hammer(document.getElementById("menuHeader"));
         var gestureHandlerBottomTavoli = new Hammer(document.getElementById("menuFooterTavoli"));
         var gestureHandlerBottom = new Hammer(document.getElementById("menuFooter"));
-
+		var gestureHandlerTopCassa = new Hammer(document.getElementById("menuHeaderCassa"));
+		
+        gestureHandlerTopCassa.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
         gestureHandlerBottom.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
         gestureHandler.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
         gestureHandlerBottomTavoli.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
@@ -29,6 +31,10 @@ $(document).ready(function() {
             $("#menuHeader, #menuFooter, #bodyContent").fadeIn('500');
             $("#tavoli").fadeOut('500');
         });
+		gestureHandlerTopCassa.on("swipedown", function() {
+            $("#menuHeader, #menuFooter, #bodyContent").fadeIn('500');
+            $("#cassa").fadeOut('500');
+        });
 
     }).fadeIn('500');
 });
@@ -44,6 +50,21 @@ function openDrawer() {
 
         }
     });
+}
+
+function chiusuraFiscale() {
+	if (confirm("Sicuro di voler fare la chiusura fiscale?")) {
+		$.ajax({
+			url: "controller/CassaController.php",
+			method: "POST",
+			data: {
+				method: 'chiusuraFiscale'
+			},
+			success: function (response) {
+				location.reload();
+			}
+		});
+	}
 }
 
 function previewBill(tavolo, cognome) {
@@ -125,7 +146,7 @@ function makeBill(tavolo) {
                 if (response == "ok") {
                     location.reload();
                 } else {
-                    alert(response);
+                    alert("Qualcosa non va, controlla il collegamento");
                 }
             }
         });
@@ -142,7 +163,11 @@ function makeBillAsporto(cognome) {
                 cognome: cognome
             },
             success: function (response) {
-                getOrdiniAsporto();
+                if (response == "ok") {
+                    location.reload();
+                } else {
+					alert("Qualcosa non va, controlla il collegamento");
+                }
             }
         });
     }
@@ -357,6 +382,7 @@ function confirmOrder(tavolo) {
             persone = $("#numeroPersone").val();
         } else {
             cognome = $("#cognome").val();
+			if (cognome == "") cognome = "x";
         }
         $.ajax({
             url: "controller/CarrelloController.php",
@@ -368,7 +394,11 @@ function confirmOrder(tavolo) {
                 cognome : cognome
             },
             success: function(response) {
-                location.reload();
+				if (!($("#asporto").is(':checked'))) {
+					makeBill(tavolo);
+				} else {
+					makeBillAsporto(cognome);
+				}
             }
         });
     }
@@ -451,6 +481,7 @@ function addToCart(product, option) {
 }
 
 function printProduct(getProduct) {
+	console.log(getProduct);
     $.ajax({
         url: "controller/ProdottoController.php",
         method: "POST",

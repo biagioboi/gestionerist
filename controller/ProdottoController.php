@@ -9,7 +9,7 @@ if (isset($_POST['method'])) {
         foreach($_POST['whatProduct'] as $prod) {
             $ret[$prod] = retriveAllProdsByCategoryName($prod);
         }
-        echo json_encode($ret);
+		echo json_encode($ret);
     }
 }
 

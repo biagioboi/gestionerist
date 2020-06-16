@@ -85,7 +85,11 @@ if (isset($_POST['method'])) {
         }
     }
     else if ($_POST['method'] == "makeBillAsporto") {
-        makeBillAsporto($_POST['cognome']);
+        if (makeBillAsporto($_POST['cognome'])) {
+            echo "ok";
+        } else {
+            echo "ko";
+        }
     }
     else if($_POST['method'] == "previewBill") {
         if ($_POST['tavolo'] != null) {
@@ -112,6 +116,7 @@ function makeBill($tavolo){
     $variabile = "Tavolo".$numeroTavolo;
     $fp = fopen($variabile.".txt", "w+");
     fwrite($fp, "=C1\n");
+	fwrite($fp, "=\"/(     Tavolo n. ".$tavolo.")\n");
     fwrite($fp, "=R1/(Coperto)/$100/*".$res['pax']."\n");
     foreach ($prod as $item) {
         fwrite($fp, "=R1/(".$item->prodotto->nome.")/$".($item->prodotto->prezzo*100)."/*".$item->quantita."\n");
@@ -119,9 +124,15 @@ function makeBill($tavolo){
     fwrite($fp, "=T1");
     fclose($fp);
     rename($variabile.".txt", "cassa/TOSEND/".$variabile.".txt");
-    sleep(2);
+    sleep(3);
     if (file_exists("cassa/TOSEND/".$variabile.".OK")) {
         unlink("cassa/TOSEND/".$variabile.".OK");
+		$new = fopen("cassa/toDisplay.txt", "w+");
+		$tot = $res['carrello']->totale;
+		fwrite($new, "=D2/(Totale: ". $tot . " euro)");
+		fclose($new);
+		sleep(1);
+		copy("cassa/toDisplay.txt", "cassa/TOSEND/toDisplay.txt");
         freeTable($tavolo);
         return true;
     } else {
@@ -134,14 +145,32 @@ function makeBill($tavolo){
 function makeBillAsporto($cognome) {
     $res = getAllProdsFromTableOrCognome(null, $cognome);
     $prod = $res['carrello'] -> prodotti;
-    $fp = fopen("prova.txt", "w+");
+    $cognome = $res['carrello'] -> identificativo;
+    $variabile = "Cliente".$cognome;
+    $fp = fopen($variabile.".txt", "w+");
     fwrite($fp, "=C1\n");
+	fwrite($fp, "=\"/(     Cliente: ".$cognome.")\n");
     foreach ($prod as $item) {
         fwrite($fp, "=R1/(".$item->prodotto->nome.")/$".($item->prodotto->prezzo*100)."/*".$item->quantita."\n");
     }
     fwrite($fp, "=T1");
     fclose($fp);
-    rename("prova.txt", "cassa/TOSEND/prova.txt");
+    rename($variabile.".txt", "cassa/TOSEND/".$variabile.".txt");
+    sleep(3);
+    if (!file_exists("cassa/TOSEND/".$variabile.".txt")) {
+        unlink("cassa/TOSEND/".$variabile.".OK");
+		$new = fopen("cassa/toDisplay.txt", "w+");
+		$tot = $res['carrello']->totale;
+		fwrite($new, "=D2/(Totale: ". $tot . " euro)");
+		fclose($new);
+		sleep(1);
+		copy("cassa/toDisplay.txt", "cassa/TOSEND/toDisplay.txt");
+        freeCliente($cognome);
+        return true;
+    } else {
+		unlink("cassa/TOSEND/".$variabile.".txt");
+		return false;
+	}
 }
 
 function printProductFromCarrello($carrello, $tavolo) {

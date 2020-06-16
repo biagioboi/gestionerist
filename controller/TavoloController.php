@@ -81,3 +81,12 @@ function freeTable($tavolo) {
     $update -> execute();
 }
 
+function freeCliente($cliente) {
+	 global $conn;
+    $delete = $conn -> prepare("DELETE FROM prodotto_carrello WHERE carrello IN (SELECT id FROM carrello WHERE cognome = ?)");
+    $delete -> bind_param('s', $cliente);
+    $delete -> execute();
+    $delete = $conn -> prepare("DELETE FROM carrello WHERE cognome = ?");
+    $delete -> bind_param('s', $cliente);
+    $delete -> execute();
+}

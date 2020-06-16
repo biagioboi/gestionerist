@@ -2,15 +2,15 @@
 <MULTIDRIVERSERVER>
   <ECRMODEL value="PRINTF" />
   <PROTOCOL value="S" />
-  <FREQUENCE value="2" />
+  <FREQUENCE value="1" />
   <CONNTYPE value="LAN" />
   <BAUDRATE value="9600" />
   <COMPORT value="COM1" />
   <ETHIP value="192.168.1.10" />
   <ETHPORT value="23" />
   <LANGUAGE value="ITA" />
-  <DIRECTORYINPUT value="D:\xampp\htdocs\Ristorante Europa\controller\cassa\TOSEND" />
-  <DIRECTORYOUTPUT value="D:\xampp\htdocs\Ristorante Europa\controller\cassa\UNSENT" />
-  <LOG value="S" />
+  <DIRECTORYINPUT value="C:\xampp\htdocs\Ristorante Europa\controller\cassa\TOSEND" />
+  <DIRECTORYOUTPUT value="C:\xampp\htdocs\Ristorante Europa\controller\cassa\UNSENT" />
+  <LOG value="N" />
   <RETRYNR value="3" />
 </MULTIDRIVERSERVER>
