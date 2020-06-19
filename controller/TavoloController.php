@@ -66,7 +66,7 @@ function setTableAsBusy($tavolo, $coperti) {
 
 
 /**
- * @param $tavolo numero del tavolo da liberare
+ * @param int $tavolo numero del tavolo da liberare
  */
 function freeTable($tavolo) {
     global $conn;

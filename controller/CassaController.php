@@ -1,15 +1,19 @@
 <?php
 
 if (isset($_POST['method'])) {
+    $fp = fsockopen("127.0.0.1", 1000, $errno, $errstr, 30);
+    if (!$fp) {
+        $result["result"] = "error";
+        echo json_encode($result);
+    }
     if ($_POST['method'] == "openDrawer") {
-        $fp = fopen("openDrawer.txt", "w+");
-        fwrite($fp, "=C86\n");
-        fclose($fp);
-        rename("openDrawer.txt", "cassa/TOSEND/openDrawer.txt");
+        $out = "{action: 'apriCassetto', content: [], header: []}" . PHP_EOL;
     } else if ($_POST['method'] == "chiusuraFiscale") {
-		$fp = fopen("chiusuraFiscale.txt", "w+");
-        fwrite($fp, "=C3\n=C10\n=C1");
-        fclose($fp);
-        rename("chiusuraFiscale.txt", "cassa/TOSEND/chiusuraFiscale.txt");
-	}
+        $out = "{action: 'chiusuraFiscale', content: [], header: []}" . PHP_EOL;
+    }
+    fwrite($fp, $out);
+    while (!feof($fp)) {
+        echo fgets($fp, 128);
+    }
+    fclose($fp);
 }

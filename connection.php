@@ -1,8 +1,7 @@
 <?php
-
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "188.12.186.162";
+$username = "biasi";
+$password = "biasi";
 $dbname = "ristorante";
 
 $conn = new MySQLi($servername, $username, $password, $dbname);

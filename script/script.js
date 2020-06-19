@@ -146,7 +146,7 @@ function makeBill(tavolo) {
                 if (response == "ok") {
                     location.reload();
                 } else {
-                    alert("Qualcosa non va, controlla il collegamento");
+                    alert("Qualcosa non va, controlla il collegamento, il tavolo rimane salvato in memoria.");
                 }
             }
         });
