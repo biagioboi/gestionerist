@@ -1,4 +1,10 @@
 <?php
+
+$fp = fsockopen("127.0.0.1", 1000, $errno, $errstr, 30);
+if (!$fp) {
+    return false;
+}
+
 $servername = "188.12.186.162";
 $username = "biasi";
 $password = "biasi";
