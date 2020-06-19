@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="858bb0ef-8abf-43fe-a923-3041e5181f37" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/CarrelloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CarrelloController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/CassaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CassaController.php" afterDir="false" />
-    </list>
+    <list default="true" id="858bb0ef-8abf-43fe-a923-3041e5181f37" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +68,7 @@
       <workItem from="1568637389797" duration="53000" />
       <workItem from="1568722637951" duration="896000" />
       <workItem from="1592567790487" duration="9087000" />
-      <workItem from="1592585230935" duration="4127000" />
+      <workItem from="1592585230935" duration="4498000" />
     </task>
     <task id="LOCAL-00001" summary="started support for java RCH server">
       <created>1592578514657</created>
@@ -97,7 +91,21 @@
       <option name="project" value="LOCAL" />
       <updated>1592582329775</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="improved support for java RCH server">
+      <created>1592591459135</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1592591459135</updated>
+    </task>
+    <task id="LOCAL-00005" summary="removed RCH software from project folder">
+      <created>1592591493929</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1592591493929</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,21 +113,23 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="started support for java RCH server" />
-    <option name="LAST_COMMIT_MESSAGE" value="started support for java RCH server" />
+    <MESSAGE value="improved support for java RCH server" />
+    <MESSAGE value="removed RCH software from project folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed RCH software from project folder" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1592582328352">
+    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1592591492118">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592582328352" />
+    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592591492118" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1592591139246">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592591139246" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1592582331510">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1592591498454">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592582331510" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592591498454" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1592572838865">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
