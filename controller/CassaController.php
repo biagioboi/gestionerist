@@ -13,7 +13,7 @@ if (isset($_POST['method'])) {
     }
     fwrite($fp, $out);
     while (!feof($fp)) {
-        echo fgets($fp, 128);
+        $out = fgets($fp, 128);
     }
     fclose($fp);
 }

@@ -115,8 +115,8 @@ function makeBill($tavolo)
         $print_return = fgets($fp, 128);
     }
     fclose($fp);
-    $print_return = json_encode($print_return);
-    if ($print_return["result"] == "success") {
+    $print_return = json_decode($print_return);
+    if ($print_return -> {'result'} == "success") {
         freeTable($tavolo);
         return true;
     } else {
@@ -128,30 +128,26 @@ function makeBillAsporto($cognome)
 {
     $res = getAllProdsFromTableOrCognome(null, $cognome);
     $prod = $res['carrello']->prodotti;
-    $cognome = $res['carrello']->identificativo;
-    $variabile = "Cliente" . $cognome;
-    $fp = fopen($variabile . ".txt", "w+");
-    fwrite($fp, "=C1\n");
-    fwrite($fp, "=\"/(     Cliente: " . $cognome . ")\n");
-    foreach ($prod as $item) {
-        fwrite($fp, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita . "\n");
+    $fp = fsockopen("127.0.0.1", 1000, $errno, $errstr, 30);
+    if (!$fp) {
+        return false;
     }
-    fwrite($fp, "=T1");
+    $result["action"] = "stampaScontrino";
+    $result["content"] = [];
+    $result["header"] = ["'Cliente: " . $cognome . "'"];
+    foreach ($prod as $item) {
+        array_push($result["content"], sprintf("{name: '%s', quantity: %d, price: %d, numRep: 1}", $item->prodotto->nome, $item->quantita, $item->prodotto->prezzo * 100));
+    }
+    fwrite($fp, createStringFromResult($result));
+    while (!feof($fp)) {
+        $print_return = fgets($fp, 128);
+    }
     fclose($fp);
-    rename($variabile . ".txt", "cassa/TOSEND/" . $variabile . ".txt");
-    sleep(3);
-    if (!file_exists("cassa/TOSEND/" . $variabile . ".txt")) {
-        unlink("cassa/TOSEND/" . $variabile . ".OK");
-        $new = fopen("cassa/toDisplay.txt", "w+");
-        $tot = $res['carrello']->totale;
-        fwrite($new, "=D2/(Totale: " . $tot . " euro)");
-        fclose($new);
-        sleep(1);
-        copy("cassa/toDisplay.txt", "cassa/TOSEND/toDisplay.txt");
+    $print_return = json_decode($print_return);
+    if ($print_return -> {'result'} == "success") {
         freeCliente($cognome);
         return true;
     } else {
-        unlink("cassa/TOSEND/" . $variabile . ".txt");
         return false;
     }
 }
@@ -396,5 +392,5 @@ function createStringFromResult($result) {
         }
     }
     $strToPrint = substr($strToPrint, 0, -1);
-    return $strToPrint;
+    return $strToPrint."}".PHP_EOL;
 }
