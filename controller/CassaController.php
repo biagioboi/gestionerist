@@ -1,11 +1,12 @@
 <?php
 
-
 if (isset($_POST['method'])) {
     if ($_POST['method'] == "openDrawer") {
         sendCommand(["=C86"]);
     } else if ($_POST['method'] == "chiusuraFiscale") {
         sendCommand(["=C3", "=C10"]);
+    } else if ($_POST['method'] == "commandsToPrint") {
+        sendCommand($_POST['command']);
     }
 }
 
@@ -25,7 +26,6 @@ function sendCommand($command)
     $xml = '<?xml version="1.0" encoding="ISO-8859-1"?>
 <Service>' . $toSend .
         '</Service>';
-    echo $xml;
     $url = 'http://192.168.1.10/service.cgi';
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: text/xml"));
@@ -34,9 +34,9 @@ function sendCommand($command)
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $result = curl_exec($curl);
     if (curl_errno($curl)) {
-        throw new Exception(curl_error($curl));
+        return false;
     }
     curl_close($curl);
-    echo $result;
+    return true;
 
 }

@@ -121,11 +121,11 @@ function makeBill($tavolo)
     array_push($tosend, "=\"/(     Tavolo n. " . $tavolo . ")");
     array_push($tosend, "=R1/(Coperto)/$100/*" . $res['pax']);
     foreach ($prod as $item) {
-        if ($prod->prodotto->prezzo == 0) continue;
+        if ($item->prodotto->prezzo == 0) continue;
         array_push($tosend, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita);
     }
     array_push($tosend, "=T1");
-    if (sendCommand($tosend) != "") {
+    if (sendCommand($tosend)) {
         freeTable($tavolo);
         return true;
     }
@@ -180,27 +180,18 @@ function makeBillAsporto($cognome)
     $res = getAllProdsFromTableOrCognome(null, $cognome);
     $prod = $res['carrello']->prodotti;
     $cognome = $res['carrello']->identificativo;
-    $variabile = "Cliente" . $cognome;
-    $fp = fopen($variabile . ".txt", "w+");
-    fwrite($fp, "=C1\n");
-    fwrite($fp, "=\"/(     Cliente: " . $cognome . ")\n");
+    $toSend = array();
+    array_push($toSend, "=C1");
+    array_push($toSend, "=\"/(     Cliente: " . $cognome . ")");
     foreach ($prod as $item) {
-        if ($item->prodotto->nome == "barra") continue;
-        fwrite($fp, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita . "\n");
+        if ($item->prodotto->prezzo == 0) continue;
+        array_push($toSend, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita);
     }
-    fwrite($fp, "=T1");
-    fclose($fp);
-    rename($variabile . ".txt", "cassa/TOSEND/" . $variabile . ".txt");
-    while (!file_exists("cassa/TOSEND/" . $variabile . ".OK")) continue;
-    unlink("cassa/TOSEND/" . $variabile . ".OK");
-    $new = fopen("cassa/toDisplay.txt", "w+");
-    $tot = $res['carrello']->totale;
-    fwrite($new, "=D2/(Totale: " . $tot . " euro)");
-    fclose($new);
-    sleep(1);
-    copy("cassa/toDisplay.txt", "cassa/TOSEND/toDisplay.txt");
-    freeCliente($cognome);
-    return true;
+    array_push($toSend, "=T1");
+    if (sendCommand($toSend)) {
+        freeCliente($cognome);
+        return true;
+    }
 }
 
 function printProductFromCarrello($carrello, $tavolo)
