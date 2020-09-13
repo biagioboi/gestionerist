@@ -1,11 +1,12 @@
 <?php
 
-$servername = "192.168.1.6";
-$username = "biasi";
-$password = "biasi";
+$servername = "localhost";
+$username = "root";
+$password = "";
 $dbname = "ristorante";
 
 $conn = new MySQLi($servername, $username, $password, $dbname);
+
 
 $dayOfWeek = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];
 $mountOfYear = ["Null", "Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"];

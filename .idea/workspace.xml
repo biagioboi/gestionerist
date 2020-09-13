@@ -1,7 +1,244 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="858bb0ef-8abf-43fe-a923-3041e5181f37" name="Default Changelist" comment="" />
+    <list default="true" id="858bb0ef-8abf-43fe-a923-3041e5181f37" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/script/scriptt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/.coveralls.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/CONTRIBUTORS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/doc/FAQ.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/doc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/doc/escpos.doxyfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/barcode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/bit-image.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/character-encodings-with-images.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/character-encodings.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/character-tables.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/customer-display.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/demo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/graphics.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/interface/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/interface/cups.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/interface/ethernet.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/interface/linux-usb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/interface/smb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/interface/windows-lpt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/interface/windows-usb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/margins-and-spacing.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/pdf417-code.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/print-from-html.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/print-from-pdf.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/qr-code.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/rawbt-receipt.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/rawbt-receipt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/receipt-with-logo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/resources/character-encoding-test-strings.inc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/resources/document.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/resources/document.odt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/resources/document.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/resources/document.z" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/resources/escpos-php-small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/resources/escpos-php.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/resources/rawbtlogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/resources/tulips.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/resources/tux.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/123-code128-barcode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/141-custom-command.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/148-data-uri.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/235-get-data.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/29-latvian-star-tup592.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/32-german-tm-t20-ii-custom-command.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/33-spanish-seypos-prp-300.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/37-chinese.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/39-currency-symbols.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/44-pound-symbol-star-tsp650.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/50-P-822D-greek.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/54-gfx-sidebyside.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/6-arabic-epos-tep-220m.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/62-greek-symbol-swap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/68-redblack.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/97-dithering.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/specific/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/text-size.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/unifont-print-buffer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/example/upside-down.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/CapabilityProfile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/CodePage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/Devices/AuresCustomerDisplay.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/EscposImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/Experimental/Unifont/ColumnFormatGlyph.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/Experimental/Unifont/ColumnFormatGlyphFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/Experimental/Unifont/FontMap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/Experimental/Unifont/UnifontGlyphFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/Experimental/Unifont/UnifontPrintBuffer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/GdEscposImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/ImagickEscposImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/NativeEscposImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintBuffers/EscposPrintBuffer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintBuffers/ImagePrintBuffer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintBuffers/PrintBuffer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintBuffers/cache/Characters-OCD-300.ser.z" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintBuffers/cache/Characters-default.ser.z" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintBuffers/cache/Characters-simple.ser.z" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintConnectors/CupsPrintConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintConnectors/DummyPrintConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintConnectors/FilePrintConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintConnectors/MultiplePrintConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintConnectors/NetworkPrintConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintConnectors/PrintConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintConnectors/RawbtPrintConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintConnectors/UriPrintConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/PrintConnectors/WindowsPrintConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/Printer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/src/Mike42/Escpos/resources/capabilities.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/bootstrap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/barcode.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/bit-image.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/character-encodings.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/character-tables.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/demo.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/graphics.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/margins-and-spacing.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/pdf417-code.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/qr-code.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/receipt-with-logo.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/text-size.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/integration/resources/output/unifont-print-buffer.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/AuresCustomerDisplayTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/CapabilityProfileTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/CodePageTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/CupsPrintConnectorTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/EscposImageTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/EscposPrintBufferTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/EscposTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/Experimental/Unifont/UnifontPrintBufferTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/FilePrintConnectorTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/GdEscposImageTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/ImagickEscposImageTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/MultiplePrintConnectorTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/NativeEscposImageTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/UriPrintConnectorTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/WindowsPrintConnectorTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/black_transparent.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/black_transparent.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/black_white.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/black_white.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/black_white.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/black_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/black_white_tall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/canvas_black.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/canvas_black.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/canvas_black.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/canvas_black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/canvas_white.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/canvas_white.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/canvas_white.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/canvas_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/demo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/escpos-php/test/unit/resources/doc.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/.coveralls.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/Doxyfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/_static/.placeholder" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/_templates/breadcrumbs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/conf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/project/contributing.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/project/license.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/user/formats.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/user/imagetypes.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/docs/user/operations.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/phpbench.json.dist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/AbstractRasterImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/BlackAndWhiteRasterImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Bmp/BmpBitfieldDecoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Bmp/BmpColorBitfield.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Bmp/BmpColorMask.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Bmp/BmpFile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Bmp/BmpFileHeader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Bmp/BmpInfoHeader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Bmp/Rle4Decoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Bmp/Rle8Decoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Bmp/RleCanvas.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/BmpCodec.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Common/DataBlobInputStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Common/DataInputStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifApplicationExt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifColorTable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifCommentExt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifData.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifDataStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifGraphicControlExt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifGraphicsBlock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifImageDescriptor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifLogicalScreen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifLogicalScreenDescriptor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifPlaintextExt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifSpecialPurposeBlock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifTableBasedImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Gif/GifUnknownExt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/GifCodec.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/ImageCodec.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/ImageDecoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/ImageEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Png/FilterDecoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Png/InterlaceDecoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Png/PngChunk.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Png/PngHeader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/Png/PngImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/PngCodec.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/PnmCodec.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Codec/WbmpCodec.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/GrayscaleRasterImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Image.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/IndexedRasterImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/PaletteGenerator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/RasterImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/RgbRasterImage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Util/AbstractLzwDictionary.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Util/LzwCompression.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Util/LzwDecodeBuffer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Util/LzwDecodeDictionary.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Util/LzwEncodeBuffer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/mike42/gfx-php/src/Mike42/GfxPhp/Util/LzwEncodeDictionary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerRCH.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/divConfermaOrdine.html" beforeDir="false" afterPath="$PROJECT_DIR$/components/divConfermaOrdine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/CarrelloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CarrelloController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/CassaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CassaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/ProdottoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ProdottoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/TavoloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/TavoloController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/script.js" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,22 +255,27 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>addT</find>
+      <find>addallp</find>
+      <find>makebill</find>
+      <find>addallprod</find>
+      <find>previewBill</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1dXO4xG8JHZx3ACbAbc1tG9Lzie" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jsx.switch.disabled" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ristoeuropa" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,73 +309,11 @@
       <workItem from="1568637324904" duration="53000" />
       <workItem from="1568637389797" duration="53000" />
       <workItem from="1568722637951" duration="896000" />
-      <workItem from="1592567790487" duration="9087000" />
-      <workItem from="1592585230935" duration="4498000" />
     </task>
-    <task id="LOCAL-00001" summary="started support for java RCH server">
-      <created>1592578514657</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1592578514657</updated>
-    </task>
-    <task id="LOCAL-00002" summary="started support for java RCH server">
-      <created>1592582312480</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1592582312480</updated>
-    </task>
-    <task id="LOCAL-00003" summary="started support for java RCH server">
-      <created>1592582329775</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1592582329775</updated>
-    </task>
-    <task id="LOCAL-00004" summary="improved support for java RCH server">
-      <created>1592591459135</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1592591459135</updated>
-    </task>
-    <task id="LOCAL-00005" summary="removed RCH software from project folder">
-      <created>1592591493929</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1592591493929</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="started support for java RCH server" />
-    <MESSAGE value="improved support for java RCH server" />
-    <MESSAGE value="removed RCH software from project folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed RCH software from project folder" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1592591492118">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592591492118" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1592591139246">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592591139246" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1592591498454">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592591498454" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1592572838865">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592572838865" />
+    <option name="version" value="1" />
   </component>
   <component name="masterDetails">
     <states>

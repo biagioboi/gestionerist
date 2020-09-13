@@ -4,6 +4,10 @@ require_once '../model/ProdottoCarrello.php';
 require_once '../model/Carrello.php';
 require_once 'ProdottoController.php';
 require_once 'TavoloController.php';
+require '../vendor/autoload.php';
+
+use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
+use Mike42\Escpos\Printer;
 
 session_start();
 if (!isset($_SESSION['carrello'])) {
@@ -44,30 +48,42 @@ if (isset($_POST['method'])) {
         $note = $_POST['note'];
         setProductNote($carrello, $prodotto, $note);
     } else if ($_POST['method'] == "addNewOrder") {
-        addCartToDatabase($carrello, $_POST['tavolo'], $_POST['cognome']);
         if ($_POST['tavolo'] != null) {
-            setTableAsBusy($_POST['tavolo'], $_POST['coperti']);
-            printProductFromCarrello($carrello, $_POST['tavolo']);
+            if (printProductFromCarrello($carrello, $_POST['tavolo'])) {
+                addCartToDatabase($carrello, $_POST['tavolo'], $_POST['cognome']);
+                setTableAsBusy($_POST['tavolo'], $_POST['coperti']);
+            } else {
+                return;
+            }
         } else {
-            printProductFromCarrelloAsporto($carrello, $_POST['cognome']);
+            if (printProductFromCarrelloAsporto($carrello, $_POST['cognome'])) {
+                addCartToDatabase($carrello, $_POST['tavolo'], $_POST['cognome']);
+            } else {
+                return;
+            }
         }
         addAllProductsFromCartToDatabase($carrello, null);
         unset($_SESSION['carrello']);
         session_regenerate_id();
     } else if ($_POST['method'] == "addToExistingOrder") {
+        if (!printProductFromCarrello($carrello, $_SESSION['tavolo'])) return;
         addCartToDatabase($carrello, $_SESSION['tavolo'], null);
         addAllProductsFromCartToDatabase($carrello, $_SESSION['tavolo']);
-        printProductFromCarrello($carrello, $_SESSION['tavolo']);
         unset($_SESSION['carrello']);
         unset($_SESSION['tavolo']);
         session_regenerate_id();
-
     } else if ($_POST['method'] == "retriveAllAsportoOrder") {
         echo json_encode(retriveAsportoOrder());
     } else if ($_POST['method'] == "deleteAsportoOrder") {
         deleteAsportoOrder($_POST['cognome']);
     } else if ($_POST['method'] == "makeBill") {
         if (makeBill($_POST['tavolo'])) {
+            echo "ok";
+        } else {
+            echo "ko";
+        }
+    } else if ($_POST['method'] == "makeFakeBill") {
+        if (makeFakeBill($_POST['tavolo'])) {
             echo "ok";
         } else {
             echo "ko";
@@ -99,67 +115,174 @@ function makeBill($tavolo)
 {
     $res = getAllProdsFromTableOrCognome($tavolo, null);
     $prod = $res['carrello']->prodotti;
-    $fp = fsockopen("127.0.0.1", 1000, $errno, $errstr, 30);
-    if (!$fp) {
-        return false;
-    }
-    $result["action"] = "stampaScontrino";
-    $result["content"] = [];
-    $result["header"] = ["'Tavolo n. " . $tavolo . "'"];
-    array_push($result["content"], sprintf("{name: 'Coperto', quantity: %d, price: 100, numRep: 1}", $res['pax']));
+    $numeroTavolo = $res['carrello']->identificativo;
+    $variabile = "Tavolo" . $numeroTavolo;
+    $fp = fopen($variabile . ".txt", "w+");
+    fwrite($fp, "=C1\n");
+    fwrite($fp, "=\"/(     Tavolo n. " . $tavolo . ")\n");
+    fwrite($fp, "=R1/(Coperto)/$100/*" . $res['pax'] . "\n");
     foreach ($prod as $item) {
-        array_push($result["content"], sprintf("{name: '%s', quantity: %d, price: %d, numRep: 1}", $item->prodotto->nome, $item->quantita, $item->prodotto->prezzo * 100));
+        if ($prod->prodotto->nome == "barra") continue;
+        fwrite($fp, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita . "\n");
     }
-    fwrite($fp, createStringFromResult($result));
-    while (!feof($fp)) {
-        $print_return = fgets($fp, 128);
-    }
+    fwrite($fp, "=T1");
     fclose($fp);
-    $print_return = json_decode($print_return);
-    if ($print_return -> {'result'} == "success") {
-        freeTable($tavolo);
-        return true;
-    } else {
+    rename($variabile . ".txt", "cassa/TOSEND/" . $variabile . ".txt");
+    while (!file_exists("cassa/TOSEND/" . $variabile . ".OK")) continue;
+    unlink("cassa/TOSEND/" . $variabile . ".OK");
+    $new = fopen("cassa/toDisplay.txt", "w+");
+    $tot = $res['carrello']->totale;
+    fwrite($new, "=D2/(Totale: " . $tot . " euro)");
+    fclose($new);
+    sleep(1);
+    copy("cassa/toDisplay.txt", "cassa/TOSEND/toDisplay.txt");
+    freeTable($tavolo);
+    return true;
+
+}
+
+function makeFakeBill($tavolo)
+{
+    $res = getAllProdsFromTableOrCognome($tavolo, null);
+    $prod = $res['carrello']->prodotti;
+    $numeroTavolo = $res['carrello']->identificativo;
+    $variabile = "Tavolo" . $numeroTavolo;
+    $tot = 0;
+    $connector = new NetworkPrintConnector("192.168.1.7", 9100);
+    $printer = new Printer($connector);
+    try {
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
+        $printer->text("Tavolo " . $tavolo);
+        $printer->feed(2);
+        $printer->setJustification();
+        foreach ($res['carrello']->prodotti as $prod) {
+            $tot += $prod->prodotto->prezzo * $prod->quantita;
+            if ($prod->prodotto->nome == "barra") {
+                $printer->text("----------------------");
+                $printer->feed(2);
+                continue;
+            }
+            $printer->setTextSize(1, 1);
+            $printer->text($prod->quantita . " x " . $prod->prodotto->nome . "\n\n");
+            $printer->selectPrintMode();
+            $printer->setTextSize(1, 1);
+            $printer->text("Tot: ".number_format($prod->prodotto->prezzo * $prod->quantita, 2) . " euro \n");
+            $printer->feed(1);
+        }
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
+        $printer->text("Totale: " . $tot);
+        $printer->feed(2);
+        $printer->cut();
+    } catch (Exception $e) {
         return false;
+    } finally {
+        $printer->close();
     }
+
+    return true;
+
 }
 
 function makeBillAsporto($cognome)
 {
     $res = getAllProdsFromTableOrCognome(null, $cognome);
     $prod = $res['carrello']->prodotti;
-    $fp = fsockopen("127.0.0.1", 1000, $errno, $errstr, 30);
-    if (!$fp) {
-        return false;
-    }
-    $result["action"] = "stampaScontrino";
-    $result["content"] = [];
-    $result["header"] = ["'Cliente: " . $cognome . "'"];
+    $cognome = $res['carrello']->identificativo;
+    $variabile = "Cliente" . $cognome;
+    $fp = fopen($variabile . ".txt", "w+");
+    fwrite($fp, "=C1\n");
+    fwrite($fp, "=\"/(     Cliente: " . $cognome . ")\n");
     foreach ($prod as $item) {
-        array_push($result["content"], sprintf("{name: '%s', quantity: %d, price: %d, numRep: 1}", $item->prodotto->nome, $item->quantita, $item->prodotto->prezzo * 100));
+        if ($prod->prodotto->nome == "barra") continue;
+        fwrite($fp, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita . "\n");
     }
-    fwrite($fp, createStringFromResult($result));
-    while (!feof($fp)) {
-        $print_return = fgets($fp, 128);
-    }
+    fwrite($fp, "=T1");
     fclose($fp);
-    $print_return = json_decode($print_return);
-    if ($print_return -> {'result'} == "success") {
-        freeCliente($cognome);
-        return true;
-    } else {
-        return false;
-    }
+    rename($variabile . ".txt", "cassa/TOSEND/" . $variabile . ".txt");
+    while (!file_exists("cassa/TOSEND/" . $variabile . ".OK")) continue;
+    unlink("cassa/TOSEND/" . $variabile . ".OK");
+    $new = fopen("cassa/toDisplay.txt", "w+");
+    $tot = $res['carrello']->totale;
+    fwrite($new, "=D2/(Totale: " . $tot . " euro)");
+    fclose($new);
+    sleep(1);
+    copy("cassa/toDisplay.txt", "cassa/TOSEND/toDisplay.txt");
+    freeCliente($cognome);
+    return true;
 }
 
 function printProductFromCarrello($carrello, $tavolo)
 {
-    //TODO istruzioni per la cassa per stampare l'ordine
+    $connector = new NetworkPrintConnector("192.168.1.7", 9100);
+    $printer = new Printer($connector);
+    try {
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
+        $printer->text("Tavolo " . $tavolo);
+        $printer->feed(2);
+        $printer->setJustification();
+        foreach ($carrello->prodotti as $prod) {
+            if ($prod->prodotto->nome == "barra") {
+                $printer->setTextSize(2, 2);
+                $printer->text("----------------------");
+                $printer->selectPrintMode();
+                $printer->feed(2);
+                continue;
+            }
+            $printer->setTextSize(1, 2);
+            $printer->text($prod->quantita . " x " . $prod->prodotto->nome . "\n");
+            if ($prod->note != "") {
+                $printer->selectPrintMode();
+                $printer->setTextSize(1, 1);
+                $printer->text("\n".$prod->note . "\n");
+            }
+            $printer->feed(1);
+        }
+			$printer -> text((new DateTime()) -> format('H:i:s'));
+            $printer->feed(1);
+        $printer->cut();
+    } catch (Exception $e) {
+        return false;
+    }finally {
+        $printer->close();
+    }
+    return true;
 }
 
 function printProductFromCarrelloAsporto($carrello, $cognome)
 {
-    //TODO istruzioni per la cassa per stampare l'ordine
+    $connector = new NetworkPrintConnector("192.168.1.7", 9100);
+    $printer = new Printer($connector);
+    try {
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
+        $printer->text("Asporto " . $cognome);
+        $printer->feed(2);
+        $printer->setJustification();
+        foreach ($carrello->prodotti as $prod) {
+            if ($prod->prodotto->nome == "barra") {
+                $printer->text("----------------------");
+                $printer->feed(2);
+                continue;
+            }
+            $printer->setTextSize(3, 2);
+            $printer->text($prod->quantita . " x " . $prod->prodotto->nome . "\n");
+            if ($prod->note != "") {
+                $printer->selectPrintMode();
+                $printer->setTextSize(2, 1);
+                $printer->text($prod->note . "\n");
+            }
+            $printer->feed(1);
+        }
+        $printer->cut();
+    } catch (Exception $e) {
+        return false;
+    }finally {
+        $printer->close();
+    }
+    return true;
 }
 
 /**
@@ -186,7 +309,7 @@ function addAllProductsFromCartToDatabase($carrello, $tavolo)
                 $update = $conn->prepare("UPDATE prodotto_carrello SET quantita = ?, note = ? WHERE carrello = ? AND prodotto = ?");
                 $quantita += $row['quantita'];
                 $note = $note . $row['note'];
-                $update->bind_param('dss', $quantita, $note, $row['carrello'], $nome);
+                $update->bind_param('dsss', $quantita, $note, $row['carrello'], $nome);
                 $update->execute();
             }
         }
@@ -226,7 +349,8 @@ function addProductToCart($carrello, $product)
 {
     $flag = false;
     foreach ($carrello->prodotti as $item) {
-        if ($item->prodotto == $product) {
+        if ($product->nome == "barra") break;
+        if ($item->prodotto == $product && checkIfExistInGroup($carrello, $product)) {
             $item->quantita += 1;
             $carrello->totale = round($carrello->totale + round($product->prezzo, 2), 2);
             $carrello->numProdotti += 1;
@@ -239,6 +363,15 @@ function addProductToCart($carrello, $product)
         $carrello->totale = round($carrello->totale + round($product->prezzo, 2), 2);
         $carrello->numProdotti += 1;
     }
+}
+
+function checkIfExistInGroup($carrello, $product){
+    $find = false;
+    foreach ($carrello -> prodotti as $item) {
+        if ($item -> prodotto -> nome == "barra") $find = false;
+        if ($item -> prodotto -> nome == $product -> nome) $find = true;
+    }
+    return $find;
 }
 
 /**
@@ -374,23 +507,4 @@ function decreaseProductFromTableOrCognome($tavolo, $cognome, $product)
         }
         $update->execute();
     }
-}
-
-
-function createStringFromResult($result) {
-    $strToPrint = "{";
-    foreach ($result as $key => $value) {
-        if ($key != "content" and $key != "header") {
-            $strToPrint .= $key . ":'" . $value . "',";
-        } else {
-            $strToPrint .= $key . ":[";
-            foreach ($value as $val) {
-                $strToPrint .= $val . ",";
-            }
-            $strToPrint = substr($strToPrint, 0, -1);
-            $strToPrint .= "],";
-        }
-    }
-    $strToPrint = substr($strToPrint, 0, -1);
-    return $strToPrint."}".PHP_EOL;
 }

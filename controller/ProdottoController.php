@@ -3,6 +3,8 @@ require_once '../connection.php';
 include '../model/Prodotto.php';
 include '../model/Categoria.php';
 
+
+
 if (isset($_POST['method'])) {
     if ($_POST['method'] == "getProduct") {
         $ret = array();
@@ -43,6 +45,7 @@ function retriveAllProdsByCategoryName($categoria) {
     $sel -> store_result();
     $arrayProds = array();
     while ($row = fetchAssocStatement($sel)) {
+        if ($row['nome'] == "barra") continue;
         $categoria = new Categoria($row['nomeCategoria'], $row['iva']);
         $prodotto = new Prodotto($row['nome'], $row['prezzo'], $categoria);
         array_push($arrayProds, $prodotto);

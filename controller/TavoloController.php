@@ -27,7 +27,7 @@ if (isset($_POST['method'])) {
  */
 function getFreeTable() {
     global $conn;
-    $getFree = $conn -> prepare("SELECT numero FROM tavolo WHERE occupato = 0");
+    $getFree = $conn -> prepare("SELECT numero FROM tavolo WHERE occupato = 0 ORDER BY numero ASC");
     $getFree -> execute();
     $getFree -> store_result();
     $res = array();
@@ -42,7 +42,7 @@ function getFreeTable() {
  */
 function getBusyTable() {
     global $conn;
-    $getFree = $conn -> prepare("SELECT numero, coperti FROM tavolo WHERE occupato = 1");
+    $getFree = $conn -> prepare("SELECT numero, coperti FROM tavolo WHERE occupato = 1 ORDER BY numero ASC");
     $getFree -> execute();
     $getFree -> store_result();
     $res = array();
@@ -66,7 +66,7 @@ function setTableAsBusy($tavolo, $coperti) {
 
 
 /**
- * @param int $tavolo numero del tavolo da liberare
+ * @param $tavolo numero del tavolo da liberare
  */
 function freeTable($tavolo) {
     global $conn;
