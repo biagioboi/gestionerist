@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="858bb0ef-8abf-43fe-a923-3041e5181f37" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/CarrelloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CarrelloController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600009545220</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="updates">
+      <created>1600009935532</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1600009935532</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,14 +108,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="updates" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="307" y="100" key="CommitChangelistDialog2" timestamp="1600009544591">
+    <state x="307" y="100" key="CommitChangelistDialog2" timestamp="1600009934900">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="307" y="100" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1600009544591" />
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1600009546896">
+    <state x="307" y="100" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1600009934900" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1600009938215">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1600009546896" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1600009938215" />
   </component>
   <component name="masterDetails">
     <states>

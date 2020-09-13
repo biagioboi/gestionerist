@@ -4,6 +4,7 @@ require_once '../model/ProdottoCarrello.php';
 require_once '../model/Carrello.php';
 require_once 'ProdottoController.php';
 require_once 'TavoloController.php';
+require_once 'CassaController.php';
 require '../vendor/autoload.php';
 
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
@@ -116,22 +117,18 @@ function makeBill($tavolo)
     $res = getAllProdsFromTableOrCognome($tavolo, null);
     $prod = $res['carrello']->prodotti;
     $tosend = array();
-    $numeroTavolo = $res['carrello']->identificativo;
-    $variabile = "Tavolo" . $numeroTavolo;
-    $fp = fopen($variabile . ".txt", "w+");
-
     array_push($tosend, "=C1");
-    array_push($tosend,"=\"/(     Tavolo n. " . $tavolo . ")");
+    array_push($tosend, "=\"/(     Tavolo n. " . $tavolo . ")");
     array_push($tosend, "=R1/(Coperto)/$100/*" . $res['pax']);
     foreach ($prod as $item) {
         if ($prod->prodotto->prezzo == 0) continue;
         array_push($tosend, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita);
     }
     array_push($tosend, "=T1");
-    sendCommand($tosend);
-    freeTable($tavolo);
-    return true;
-
+    if (sendCommand($tosend) != "") {
+        freeTable($tavolo);
+        return true;
+    }
 }
 
 function makeFakeBill($tavolo)
@@ -160,7 +157,7 @@ function makeFakeBill($tavolo)
             $printer->text($prod->quantita . " x " . $prod->prodotto->nome . "\n\n");
             $printer->selectPrintMode();
             $printer->setTextSize(1, 1);
-            $printer->text("Tot: ".number_format($prod->prodotto->prezzo * $prod->quantita, 2) . " euro \n");
+            $printer->text("Tot: " . number_format($prod->prodotto->prezzo * $prod->quantita, 2) . " euro \n");
             $printer->feed(1);
         }
         $printer->setJustification(Printer::JUSTIFY_CENTER);
@@ -229,16 +226,16 @@ function printProductFromCarrello($carrello, $tavolo)
             if ($prod->note != "") {
                 $printer->selectPrintMode();
                 $printer->setTextSize(1, 1);
-                $printer->text("\n".$prod->note . "\n");
+                $printer->text("\n" . $prod->note . "\n");
             }
             $printer->feed(1);
         }
-			$printer -> text((new DateTime()) -> format('H:i:s'));
-            $printer->feed(1);
+        $printer->text((new DateTime())->format('H:i:s'));
+        $printer->feed(1);
         $printer->cut();
     } catch (Exception $e) {
         return false;
-    }finally {
+    } finally {
         $printer->close();
     }
     return true;
@@ -272,7 +269,7 @@ function printProductFromCarrelloAsporto($carrello, $cognome)
         $printer->cut();
     } catch (Exception $e) {
         return false;
-    }finally {
+    } finally {
         $printer->close();
     }
     return true;
@@ -358,11 +355,12 @@ function addProductToCart($carrello, $product)
     }
 }
 
-function checkIfExistInGroup($carrello, $product){
+function checkIfExistInGroup($carrello, $product)
+{
     $find = false;
-    foreach ($carrello -> prodotti as $item) {
-        if ($item -> prodotto -> nome == "barra") $find = false;
-        if ($item -> prodotto -> nome == $product -> nome) $find = true;
+    foreach ($carrello->prodotti as $item) {
+        if ($item->prodotto->nome == "barra") $find = false;
+        if ($item->prodotto->nome == $product->nome) $find = true;
     }
     return $find;
 }
