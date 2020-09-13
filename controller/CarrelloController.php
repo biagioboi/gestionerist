@@ -188,7 +188,7 @@ function makeBillAsporto($cognome)
     fwrite($fp, "=C1\n");
     fwrite($fp, "=\"/(     Cliente: " . $cognome . ")\n");
     foreach ($prod as $item) {
-        if ($prod->prodotto->nome == "barra") continue;
+        if ($item->prodotto->nome == "barra") continue;
         fwrite($fp, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita . "\n");
     }
     fwrite($fp, "=T1");
