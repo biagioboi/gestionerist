@@ -115,27 +115,20 @@ function makeBill($tavolo)
 {
     $res = getAllProdsFromTableOrCognome($tavolo, null);
     $prod = $res['carrello']->prodotti;
+    $tosend = array();
     $numeroTavolo = $res['carrello']->identificativo;
     $variabile = "Tavolo" . $numeroTavolo;
     $fp = fopen($variabile . ".txt", "w+");
-    fwrite($fp, "=C1\n");
-    fwrite($fp, "=\"/(     Tavolo n. " . $tavolo . ")\n");
-    fwrite($fp, "=R1/(Coperto)/$100/*" . $res['pax'] . "\n");
+
+    array_push($tosend, "=C1");
+    array_push($tosend,"=\"/(     Tavolo n. " . $tavolo . ")");
+    array_push($tosend, "=R1/(Coperto)/$100/*" . $res['pax']);
     foreach ($prod as $item) {
-        if ($prod->prodotto->nome == "barra") continue;
-        fwrite($fp, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita . "\n");
+        if ($prod->prodotto->prezzo == 0) continue;
+        array_push($tosend, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita);
     }
-    fwrite($fp, "=T1");
-    fclose($fp);
-    rename($variabile . ".txt", "cassa/TOSEND/" . $variabile . ".txt");
-    while (!file_exists("cassa/TOSEND/" . $variabile . ".OK")) continue;
-    unlink("cassa/TOSEND/" . $variabile . ".OK");
-    $new = fopen("cassa/toDisplay.txt", "w+");
-    $tot = $res['carrello']->totale;
-    fwrite($new, "=D2/(Totale: " . $tot . " euro)");
-    fclose($new);
-    sleep(1);
-    copy("cassa/toDisplay.txt", "cassa/TOSEND/toDisplay.txt");
+    array_push($tosend, "=T1");
+    sendCommand($tosend);
     freeTable($tavolo);
     return true;
 
