@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="858bb0ef-8abf-43fe-a923-3041e5181f37" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/CarrelloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CarrelloController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/CassaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CassaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/scriptt.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/scriptt.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,15 +21,6 @@
         <option value="HTML File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>addT</find>
-      <find>addallp</find>
-      <find>makebill</find>
-      <find>addallprod</find>
-      <find>previewBill</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -106,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600010235090</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updates">
+      <created>1600011088638</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1600011088638</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,14 +114,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="updates" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="307" y="100" key="CommitChangelistDialog2" timestamp="1600010234416">
+    <state x="307" y="100" key="CommitChangelistDialog2" timestamp="1600011088137">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="307" y="100" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1600010234416" />
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1600010237065">
+    <state x="307" y="100" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1600011088137" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1600011090411">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1600010237065" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1600011090411" />
   </component>
   <component name="masterDetails">
     <states>

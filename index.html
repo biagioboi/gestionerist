@@ -88,6 +88,9 @@
             <tr>
                 <td onclick="chiusuraFiscale();" >Chiusura fiscale</td>
             </tr>
+            <tr>
+                <td onclick="scontrinoLibero();">Scontrino Libero</td>
+            </tr>
         </table>
 
     </div>
@@ -111,6 +114,45 @@
             </div>
             <div class="modal-footer">
                 <button id="btnSaveNote" type="button" class="btn btn-primary" onclick="saveNoteProduct();" nomeProdotto="">Salva</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal scontrino libero -->
+<div class="modal fade" id="modalScontrinoLibero" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalScontrinoLiberoTitle">Scontrino libero</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="descrizioneScontrinoLibero">Descrizione</label>
+                    <input class="form-control" id="descrizioneScontrinoLibero" type="text" value="">
+                </div>
+                <div class="form-group">
+                    <label for="prezzoScontrinoLibero">Prezzo</label>
+                    <input class="form-control" id="prezzoScontrinoLibero" type="text" value="">
+                </div>
+                <div class="form-group">
+                    <label for="codiceFiscaleScontrinoLibero">Codice Fiscale</label>
+                    <input class="form-control" id="codiceFiscaleScontrinoLibero" type="text" value="">
+                </div>
+                <div class="form-group">
+                    <label for="categoriaScontrinoLibero">Categoria</label>
+                    <select class="form-control" id="categoriaScontrinoLibero">
+                        <option value="R1">Ristorante</option>
+                        <option value="R2">Hotel</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnEseguiScontrinoLibero" type="button" class="btn btn-primary">Invia</button>
             </div>
         </div>
     </div>

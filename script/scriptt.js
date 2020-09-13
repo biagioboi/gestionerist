@@ -541,4 +541,34 @@ function addBarra() {
     addToCart("barra", "carrello");
 }
 
+function scontrinoLibero() {
+    $("#modalScontrinoLibero").modal('toggle');
+}
 
+$("#btnEseguiScontrinoLibero").click(function () {
+    let descr = $("#descrizioneScontrinoLibero").val();
+    let price = $("#prezzoScontrinoLibero").val();
+    if (price != "") price = "$" + parseInt(price) * 100;
+    else return;
+    let cat = $("#categoriaScontrinoLibero").val();
+    if (descr != "") descr = "(" + descr + ")/";
+    let cf = $("#codiceFiscaleScontrinoLibero").val();
+    let commands = ["=" + cat + "/" + descr + price];
+    if (cf.length == 16) {
+        commands.push("=\"/?C/(" + cf + ")");
+    } else if (cf.length != 0) {
+        return;
+    }
+    commands.push("=T1")
+    $.ajax({
+        type: 'POST',
+        url: 'controller/CassaController.php',
+        data : {
+            method: 'commandsToPrint',
+            command: commands
+        },
+        success: (response) => {
+            location.reload();
+        }
+    })
+});
