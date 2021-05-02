@@ -37,6 +37,10 @@ $(document).ready(function () {
         });
 
     }).fadeIn('500');
+
+    $("input[name='payment']").change(function() {
+        document.methodPayment = $(this).val();
+    })
 });
 
 function openDrawer() {
@@ -136,23 +140,8 @@ function deleteFromOrder(prodotto, tavolo, cognome) {
 }
 
 function makeBill(tavolo) {
-    if (confirm("Sicuro di voler stampare lo scontrino del tavolo " + tavolo + " ?")) {
-        $.ajax({
-            url: "controller/CarrelloController.php",
-            method: "POST",
-            data: {
-                method: 'makeBill',
-                tavolo: tavolo
-            },
-            success: function (response) {
-                if (response == "ok") {
-                    location.reload();
-                } else {
-                    alert("Qualcosa non va, controlla il collegamento");
-                }
-            }
-        });
-    }
+    $("#btnScontrino").attr("tavolo", tavolo).attr("cognome", "");
+    $("#modalPagamento").modal('toggle');
 }
 
 function makeFakeBill(tavolo) {
@@ -174,13 +163,22 @@ function makeFakeBill(tavolo) {
 }
 
 function makeBillAsporto(cognome) {
-    if (confirm("Sicuro di voler stampare lo scontrino di " + cognome + " ?")) {
+    $("#btnScontrino").attr("tavolo", "").attr("cognome", cognome);
+    $("#modalPagamento").modal('toggle');
+}
+
+function makeBillReal() {
+    let cognome = $("#btnScontrino").attr("cognome");
+    let tavolo = $("#btnScontrino").attr("tavolo");
+    let method = document.methodPayment;
+    if (cognome != "") {
         $.ajax({
             url: "controller/CarrelloController.php",
             method: "POST",
             data: {
                 method: 'makeBillAsporto',
-                cognome: cognome
+                cognome: cognome,
+                payment: method
             },
             success: function (response) {
                 if (response == "ok") {
@@ -190,10 +188,28 @@ function makeBillAsporto(cognome) {
                 }
             }
         });
+    } else {
+        if (confirm("Sicuro di voler stampare lo scontrino del tavolo " + tavolo + " ?")) {
+            $.ajax({
+                url: "controller/CarrelloController.php",
+                method: "POST",
+                data: {
+                    method: 'makeBill',
+                    tavolo: tavolo,
+                    payment: method
+                },
+                success: function (response) {
+                    if (response == "ok") {
+                        location.reload();
+                    } else {
+                        alert("Qualcosa non va, controlla il collegamento");
+                    }
+                }
+            });
+        }
     }
 }
-
-function deleteAsporto(cognome) {
+ function deleteAsporto(cognome) {
     if (confirm("Sicuro di voler cancellare l'ordine di " + cognome + " ?")) {
         $.ajax({
             url: "controller/CarrelloController.php",

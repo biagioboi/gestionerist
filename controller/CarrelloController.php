@@ -78,7 +78,7 @@ if (isset($_POST['method'])) {
     } else if ($_POST['method'] == "deleteAsportoOrder") {
         deleteAsportoOrder($_POST['cognome']);
     } else if ($_POST['method'] == "makeBill") {
-        if (makeBill($_POST['tavolo'])) {
+        if (makeBill($_POST['tavolo'], $_POST['payment'])) {
             echo "ok";
         } else {
             echo "ko";
@@ -90,7 +90,7 @@ if (isset($_POST['method'])) {
             echo "ko";
         }
     } else if ($_POST['method'] == "makeBillAsporto") {
-        if (makeBillAsporto($_POST['cognome'])) {
+        if (makeBillAsporto($_POST['cognome'], $_POST['payment'])) {
             echo "ok";
         } else {
             echo "ko";
@@ -112,7 +112,7 @@ if (isset($_POST['method'])) {
     }
 }
 
-function makeBill($tavolo)
+function makeBill($tavolo, $payment)
 {
     $res = getAllProdsFromTableOrCognome($tavolo, null);
     $prod = $res['carrello']->prodotti;
@@ -124,7 +124,7 @@ function makeBill($tavolo)
         if ($item->prodotto->prezzo == 0) continue;
         array_push($tosend, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita);
     }
-    array_push($tosend, "=T1");
+    array_push($tosend, "=".$payment);
     if (sendCommand($tosend)) {
         freeTable($tavolo);
         return true;
@@ -175,7 +175,7 @@ function makeFakeBill($tavolo)
 
 }
 
-function makeBillAsporto($cognome)
+function makeBillAsporto($cognome, $payment)
 {
     $res = getAllProdsFromTableOrCognome(null, $cognome);
     $prod = $res['carrello']->prodotti;
@@ -187,7 +187,7 @@ function makeBillAsporto($cognome)
         if ($item->prodotto->prezzo == 0) continue;
         array_push($toSend, "=R1/(" . $item->prodotto->nome . ")/$" . ($item->prodotto->prezzo * 100) . "/*" . $item->quantita);
     }
-    array_push($toSend, "=T1");
+    array_push($toSend, "=".$payment);
     if (sendCommand($toSend)) {
         freeCliente($cognome);
         return true;

@@ -109,6 +109,30 @@
 </div>
 
 
+
+<!-- Modal per il pagamento -->
+<div class="modal fade" id="modalPagamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalPagamentoTitle">Pagamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="radio" name="payment" id="paymentCash" value="T1"/>
+                <label for="paymentCash">Contanti</label><br>
+                <input type="radio" name="payment" id="paymentCard" value="T2"/>
+                <label for="paymentCard">Carte</label><br>
+            </div>
+            <div class="modal-footer">
+                <button id="btnScontrino" type="button" class="btn btn-primary" onclick="makeBillReal();" cognome="" tavolo="">Effettua scontrino</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal per il menu del giorno -->
 <div class="modal fade" id="modalMenuGiorno" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -196,6 +220,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://hammerjs.github.io/dist/hammer.js"></script>
-<script src="script/script.js"></script>
+<script src="script/script.js?v=1.1"></script>
 </body>
 </html>
