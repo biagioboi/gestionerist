@@ -212,6 +212,24 @@ function printProductFromCarrello($carrello, $tavolo)
                 $printer->feed(2);
                 continue;
             }
+            if ($prod->prodotto->nome == "*Menu di carne*") {
+                $myfile = fopen("meat.txt", "r");
+                $toAdd = "";
+                while(!feof($myfile)) {
+                    $toAdd = $toAdd.fgets($myfile) . "<br>";
+                }
+                fclose($myfile);
+                $prod -> note = $toAdd . "\n" . $prod -> note;
+            }
+            if ($prod->prodotto->nome == "*Menu di pesce*") {
+                $myfile = fopen("fish.txt", "r");
+                $toAdd = "";
+                while(!feof($myfile)) {
+                    $toAdd = $toAdd.fgets($myfile) . "\n";
+                }
+                fclose($myfile);
+                $prod -> note = $toAdd . "\n" . $prod -> note;
+            }
             $printer->setTextSize(1, 2);
             $printer->text($prod->quantita . " x " . $prod->prodotto->nome . "\n");
             if ($prod->note != "") {
@@ -247,6 +265,24 @@ function printProductFromCarrelloAsporto($carrello, $cognome)
                 $printer->text("----------------------");
                 $printer->feed(2);
                 continue;
+            }
+            if ($prod->prodotto->nome == "*Menu di carne*") {
+                $myfile = fopen("meat.txt", "r");
+                $toAdd = "";
+                while(!feof($myfile)) {
+                    $toAdd = $toAdd.fgets($myfile) . "<br>";
+                }
+                fclose($myfile);
+                $prod -> note = $toAdd . "\n" . $prod -> note;
+            }
+            if ($prod->prodotto->nome == "*Menu di pesce*") {
+                $myfile = fopen("fish.txt", "r");
+                $toAdd = "";
+                while(!feof($myfile)) {
+                    $toAdd = $toAdd.fgets($myfile) . "\n";
+                }
+                fclose($myfile);
+                $prod -> note = $toAdd . "\n" . $prod -> note;
             }
             $printer->setTextSize(3, 2);
             $printer->text($prod->quantita . " x " . $prod->prodotto->nome . "\n");

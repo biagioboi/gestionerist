@@ -12,6 +12,14 @@ if (isset($_POST['method'])) {
             $ret[$prod] = retriveAllProdsByCategoryName($prod);
         }
 		echo json_encode($ret);
+    } else if ($_POST['method'] == "setMenu") {
+        $myfile = fopen("meat.txt", "w+");
+        fwrite($myfile, $_POST['meat']);
+        fclose($myfile);
+        $newMyFile = fopen("fish.txt", "w+");
+        fwrite($newMyFile, $_POST['fish']);
+        fclose($newMyFile);
+        echo json_encode(true);
     }
 }
 

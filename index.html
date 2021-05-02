@@ -97,11 +97,40 @@
 			<tr>
                 <td onclick="pubblicaMessaggio();">Pubblica messaggio</td>
             </tr>
+            <tr>
+                <td onclick="menuDelGiorno();">Imposta men&ugrave; del giorno</td>
+            </tr>
         </table>
 
     </div>
     <div id="menuFooterCassa">
 
+    </div>
+</div>
+
+
+<!-- Modal per il menu del giorno -->
+<div class="modal fade" id="modalMenuGiorno" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalMenuGiornoTitle">Menu del giorno</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label for="fishMenu">Men&ugrave; di pesce</label>
+                <textarea class="form-control" id="fishMenu" rows="3"></textarea>
+            </div>
+            <div class="modal-body">
+                <label for="fishMenu">Men&ugrave; di carne</label>
+                <textarea class="form-control" id="meatMenu" rows="3"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button id="btnSaveMenu" type="button" class="btn btn-primary" onclick="saveMenu();">Salva</button>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -600,3 +600,22 @@ function pubblicaMessaggio() {
         }
     })
 }
+
+function menuDelGiorno() {
+    $("#modalMenuGiorno").modal('toggle');
+}
+
+function saveMenu() {
+    $.ajax({
+        type: 'POST',
+        url: 'controller/ProdottoController.php',
+        data : {
+            method: 'setMenu',
+            fish: $("#fishMenu").val(),
+            meat: $("#meatMenu").val()
+        },
+        success: (response) => {
+            location.reload();
+        }
+    })
+}
