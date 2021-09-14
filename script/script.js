@@ -38,8 +38,12 @@ $(document).ready(function () {
 
     }).fadeIn('500');
 
+    document.methodPaymentLibero = "=T1";
     $("input[name='payment']").change(function() {
         document.methodPayment = $(this).val();
+    })
+    $("input[name='paymentLibero']").change(function() {
+        document.methodPaymentLibero = $(this).val();
     })
 });
 
@@ -117,7 +121,7 @@ function previewBill(tavolo, cognome) {
             if (parseInt(res.pax) != 0)
                 $("#menuFooterTavoli table").hide().html("<tr><td style='width: 15%;' onclick='location.reload();'><i class='material-icons'>arrow_back</i></td><td>Totale incl. coperto " + costoTotale + "€</td><td style='width: 10%;' onclick=\"makeFakeBill('" + res.carrello.identificativo + "');\">pr</td><td style='width: 15%;' onclick=\"makeBill('" + res.carrello.identificativo + "');\"><i class='material-icons'>done_all</i></tr>").fadeIn('500');
             else
-                $("#menuFooterTavoli table").hide().html("<tr><td style='width: 15%;' onclick='location.reload();'><i class='material-icons'>arrow_back</i></td><td>Totale incl. coperto " + costoTotale + "€</td><td style='width: 15%;' onclick=\"makeBillAsporto('" + res.carrello.identificativo + "');\"><i class='material-icons'>done_all</i></tr>").fadeIn('500');
+                $("#menuFooterTavoli table").hide().html("<tr><td style='width: 15%;' onclick='location.reload();'><i class='material-icons'>arrow_back</i></td><td>Totale incl. coperto " + costoTotale + "€</td><td style='width: 10%;' onclick=\"makeFakeBillAsporto('" + res.carrello.identificativo + "');\">pr</td><td style='width: 15%;' onclick=\"makeBillAsporto('" + res.carrello.identificativo + "');\"><i class='material-icons'>done_all</i></tr>").fadeIn('500');
 
         }
     });
@@ -151,6 +155,24 @@ function makeFakeBill(tavolo) {
         data: {
             method: 'makeFakeBill',
             tavolo: tavolo
+        },
+        success: function (response) {
+            if (response == "ok") {
+                location.reload();
+            } else {
+                alert("Qualcosa non va, controlla il collegamento");
+            }
+        }
+    });
+}
+
+function makeFakeBillAsporto(cognome) {
+    $.ajax({
+        url: "controller/CarrelloController.php",
+        method: "POST",
+        data: {
+            method: 'makeFakeBill',
+            cognome: cognome
         },
         success: function (response) {
             if (response == "ok") {
@@ -562,6 +584,7 @@ function scontrinoLibero() {
 }
 
 $("#btnEseguiScontrinoLibero").click(function () {
+    let payment = document.methodPaymentLibero;
     let descr = $("#descrizioneScontrinoLibero").val();
     let price = $("#prezzoScontrinoLibero").val();
     if (price != "") price = "$" + parseInt(price) * 100;
@@ -575,7 +598,7 @@ $("#btnEseguiScontrinoLibero").click(function () {
     } else if (cf.length != 0) {
         return;
     }
-    commands.push("=T1")
+    commands.push(payment);
     $.ajax({
         type: 'POST',
         url: 'controller/CassaController.php',

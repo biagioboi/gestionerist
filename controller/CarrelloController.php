@@ -84,10 +84,18 @@ if (isset($_POST['method'])) {
             echo "ko";
         }
     } else if ($_POST['method'] == "makeFakeBill") {
-        if (makeFakeBill($_POST['tavolo'])) {
-            echo "ok";
+        if (isset($_POST['tavolo'])) {
+            if (makeFakeBill($_POST['tavolo'], 1)) {
+                echo "ok";
+            } else {
+                echo "ko";
+            }
         } else {
-            echo "ko";
+            if (makeFakeBill($_POST['cognome'], 0)) {
+                echo "ok";
+            } else {
+                echo "ko";
+            }
         }
     } else if ($_POST['method'] == "makeBillAsporto") {
         if (makeBillAsporto($_POST['cognome'], $_POST['payment'])) {
@@ -131,19 +139,27 @@ function makeBill($tavolo, $payment)
     }
 }
 
-function makeFakeBill($tavolo)
+function makeFakeBill($tavolo, $isTable)
 {
-    $res = getAllProdsFromTableOrCognome($tavolo, null);
+    if ($isTable) {
+        $res = getAllProdsFromTableOrCognome($tavolo, null);
+    } else {
+        $res = getAllProdsFromTableOrCognome(null, $tavolo);
+    }
     $prod = $res['carrello']->prodotti;
     $numeroTavolo = $res['carrello']->identificativo;
-    $variabile = "Tavolo" . $numeroTavolo;
     $tot = 0;
-    $connector = new NetworkPrintConnector("192.168.1.7", 9100);
+    $connector = new NetworkPrintConnector("192.168.1.4", 9100);
     $printer = new Printer($connector);
     try {
         $printer->setJustification(Printer::JUSTIFY_CENTER);
         $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-        $printer->text("Tavolo " . $tavolo);
+        $printer->text("Ristorante Europa\nPreconto\n");
+        if ($isTable) {
+            $printer->text("Tavolo " . $tavolo);
+        } else {
+            $printer->text("Asporto ".$tavolo);
+        }
         $printer->feed(2);
         $printer->setJustification();
         foreach ($res['carrello']->prodotti as $prod) {
@@ -154,15 +170,26 @@ function makeFakeBill($tavolo)
                 continue;
             }
             $printer->setTextSize(1, 1);
-            $printer->text($prod->quantita . " x " . $prod->prodotto->nome . "\n\n");
+            $printer->text($prod->quantita . " x " . $prod->prodotto->nome . "\n");
             $printer->selectPrintMode();
             $printer->setTextSize(1, 1);
-            $printer->text("Tot: " . number_format($prod->prodotto->prezzo * $prod->quantita, 2) . " euro \n");
+            $printer->text("Totale: " . number_format($prod->prodotto->prezzo * $prod->quantita, 2) . " euro \n");
             $printer->feed(1);
+        }
+        if ($res['pax']) {
+            $printer->setTextSize(1, 1);
+            $printer->text($res['pax'] . " x Coperto\n");
+            $printer->selectPrintMode();
+            $printer->setTextSize(1, 1);
+            $printer->text("Totale: " . number_format($res['pax'], 2) . " euro \n");
         }
         $printer->setJustification(Printer::JUSTIFY_CENTER);
         $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-        $printer->text("Totale: " . $tot);
+        $printer->feed(2);
+        $tot += $res['pax'];
+        $printer->text("Totale: " . number_format($tot, 2) . " euro \n");
+        $printer->setTextSize(1, 1);
+        $printer->text("Ricorda di ritirare lo scontrino alla cassa.\nGrazie per averci scelto.");
         $printer->feed(2);
         $printer->cut();
     } catch (Exception $e) {
